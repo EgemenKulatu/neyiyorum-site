@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodolojimiz — NeYiyorum</title>
+<meta name="description" content="NeYiyorum'un puanlama ve uyarı sisteminin nasıl çalıştığı: Nutri-Score tabanlı puan, kaynaklı besin değeri eşikleri, kişisel uyarılar, alternatif öneriler, veri kaynağı, veri güncelliği, tarafsızlık ilkesi ve itiraz süreci.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M6 22c0-7 5.5-12 15-12 0 9-5 14-15 14z" fill="currentColor"/>
+        <path d="M6 25c2-5 5.5-8.5 10.5-11" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      NeYiyorum
+    </a>
+    <nav class="site-nav" aria-label="Site navigasyonu">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="metodoloji.html" aria-current="page">Metodoloji</a>
+      <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Metodolojimiz</h1>
+
+    <p class="lead">
+      NeYiyorum, taradığınız gıda ürünleri hakkında anlaşılır ve tarafsız bilgi
+      sunmayı amaçlar. Bu sayfa, puanların, besin değeri seviyelerinin, kişisel
+      uyarıların ve alternatif önerilerin hangi kurallarla ve hangi kaynaklara
+      dayanarak üretildiğini açıklar.
+    </p>
+
+    <p>
+      Uygulama yalnızca Türkiye'de dağıtılmaktadır. Aşağıdaki kurallar
+      uygulamanın 17 Eylül 2026 tarihli sürümünü anlatır; kurallar değiştikçe bu
+      sayfa güncellenir ve değişiklikler sayfanın sonundaki geçmişte listelenir.
+    </p>
+
+    <h2>Tarafsızlık ilkemiz</h2>
+
+    <div class="callout">
+      <p>
+        <strong>Hiçbir marka, ürünü burada daha iyi göstermek, önerilerde öne
+        çıkmak ya da bir uyarıyı kaldırtmak için bize ödeme yapamaz.</strong>
+        Puanlar, uyarılar ve öneriler tamamen aşağıda açıklanan kurallara göre
+        otomatik hesaplanır.
+      </p>
+      <p>
+        Uygulama ücretsizdir; gelirimiz yalnızca Google AdMob üzerinden
+        gösterilen <strong>kişiselleştirilmemiş reklamlardan</strong> gelir.
+        Reklamlar profilinizdeki tercihlere, alerjenlere veya tarama geçmişinize
+        göre seçilmez. Hangi reklamın gösterileceğini Google'ın reklam ağı
+        belirler; bir markanın reklamı görünse bile bu, o markanın ürünlerinin
+        puanını, uyarılarını ya da önerilerdeki yerini değiştirmez.
+        <span class="fill">Gıda ve içecek, zayıflama ve diyet, ilaç ve takviye
+        ile alkol kategorilerindeki reklamlar reklam ağı ayarlarında
+        engellenmiştir.</span>
+      </p>
+      <p>
+        Reklamlar puanın ve uyarıların gösterildiği yerlere hiç karışmaz:
+        tarama (kamera) ekranında ve ürün kartının içinde hiçbir reklam alanı
+        yoktur. Sabit reklam alanı yalnızca Geçmiş ve Öneriler sekmelerinin en
+        altındadır. Tam ekran reklam her seferinde değil, arada bir ve yalnızca
+        ürün kartı kapanırken açılır.
+      </p>
+    </div>
+
+    <h2>Veri kaynağımız</h2>
+
+    <p>
+      Ürün bilgilerinin büyük kısmı
+      <a href="https://tr.openfoodfacts.org" rel="noopener">Open Food Facts</a>
+      adlı, dünya çapında gönüllülerin katkı sağladığı açık bir veritabanından
+      gelir (veritabanı ODbL, içerikleri DbCL, ürün fotoğrafları CC BY-SA 3.0
+      lisansı altında). Open Food Facts verileri olduğu gibi sunar ve
+      doğruluğunu garanti etmez. Türkiye'deki ürün kapsamı sınırlı olabilir; bir
+      ürünü bulamazsak kullanıcılarımız ekleyebilir (aşağıya bakın).
+    </p>
+
+    <p>
+      Bazı ürünlerde besin değeri, katkı maddesi veya içerik bilgisi eksiktir.
+      Eksik olduğunda bunu açıkça "veri yok" ya da "tahmini" olarak belirtiriz;
+      hiçbir zaman uydurma bir sayı göstermeyiz. <strong>Ambalajdaki etiket her
+      zaman esastır.</strong>
+    </p>
+
+    <h3>Verinin güncelliği</h3>
+
+    <p>
+      Open Food Facts'ten alınan ürün bilgisi, her taramada yeniden indirilmek
+      yerine veritabanımızda saklanır. Ürün ekranında, bilginin veritabanımızda
+      en son güncellendiği tarih "Veri tarihi" olarak gösterilir.
+      <span class="fill">Open Food Facts'ten alınan kayıtlar en geç 30 günde bir
+      Open Food Facts'teki güncel haliyle yeniden karşılaştırılır ve
+      güncellenir.</span>
+    </p>
+
+    <h2>Genel puan nasıl hesaplanıyor</h2>
+
+    <p>Genel puan (0–100) iki katmanlıdır.</p>
+
+    <h3>1. Taban puan: Nutri-Score harfi</h3>
+
+    <p>
+      Taban puan, ürünün Nutri-Score harfinden gelir. Nutri-Score, Fransa'da
+      geliştirilen ve bazı Avrupa ülkelerinde gönüllü olarak kullanılan bir
+      beslenme etiketleme algoritmasıdır. Uygulamada gösterilen harf,
+      <strong>Open Food Facts'in ürünün besin değerlerinden hesapladığı
+      harftir</strong>: Türkiye'de ambalajlarda yer almaz ve üreticinin beyanı
+      değildir. Nutri-Score, Santé publique France'a ait bir markadır; NeYiyorum
+      bu kurumla bağlantılı değildir ve Nutri-Score logosunu kullanmaz.
+    </p>
+
+    <p>
+      Bir ürünün Nutri-Score harfi yoksa genel puan da hesaplanmaz; ürün
+      ekranında "yeterli veri yok" gösterilir.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Harf</th><th>Taban puan</th><th>Puanın alabileceği aralık</th><th>Puan bandı</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>90</td><td>80–100</td><td>Çok yüksek</td></tr>
+          <tr><td>B</td><td>70</td><td>60–80</td><td>Yüksek</td></tr>
+          <tr><td>C</td><td>50</td><td>40–60</td><td>Orta</td></tr>
+          <tr><td>D</td><td>30</td><td>20–40</td><td>Düşük</td></tr>
+          <tr><td>E</td><td>10</td><td>0–20</td><td>Çok düşük</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>
+      Puan bandı ürünü değil puanı tarif eder ve sınırları (80, 60, 40, 20)
+      harflerin aralıklarıyla aynıdır. Bandın sınırında kalan bir puan (ör. en
+      iyi besin değerlerine sahip bir B ürünü 80 alabilir) bir üst banda düşer.
+    </p>
+
+    <h3>2. İnce ayar: aynı harfteki ürünleri ayırmak</h3>
+
+    <p>
+      Aynı harfi taşıyan ürünler, gerçek besin değerlerine göre harfin kendi
+      aralığı içinde en fazla ±10 puan konumlandırılır. İnce ayar tek başına puan
+      üretmez ve bir ürünü komşu harfin aralığına taşımaz.
+    </p>
+
+    <ul>
+      <li>
+        Kullanılan değerler: şeker, tuz ve doymuş yağ (ağırlık 2); protein ve lif
+        (ağırlık 1). Bu 2'ye 1 oran Nutri-Score'un kendi yapısından gelir:
+        olumsuz bileşenler, olumlu bileşenlerden daha ağır sayılır.
+      </li>
+      <li>
+        Her değerin katkısı, aşağıdaki eşiklere göre ürünün ölçekteki konumundan
+        hesaplanır; ürün ekranındaki çubukta gördüğünüz konumun aynısıdır.
+      </li>
+      <li>
+        Protein ve lif yalnızca "yüksek" düzeydeyken puanı artırır; düşük olmaları
+        puanı düşürmez. Bu da Nutri-Score'un yaklaşımıyla aynıdır.
+      </li>
+      <li>
+        Eksik değer ince ayarı küçültür: veri azken harfe daha çok güveniriz.
+        Hiç besin değeri yoksa puan harfin taban puanıdır.
+      </li>
+      <li>
+        Enerji (kalori), toplam yağ, karbonhidrat ve katkı maddeleri ince ayara
+        <strong>girmez</strong>. Enerji Nutri-Score harfinde zaten hesaba
+        katılmıştır; toplam yağ ve karbonhidratta önemli olan türüdür ve ayırt
+        edici kısımları (doymuş yağ, şeker) ayrıca sayılır.
+      </li>
+      <li>
+        Puan tam sayıya yuvarlanır; birbirine çok yakın iki ürün aynı puanı
+        alabilir.
+      </li>
+    </ul>
+
+    <h2>Besin değeri seviyeleri ve kaynakları</h2>
+
+    <p>
+      Ürün ekranında besin değerleri üç bölümde gösterilir: <strong>Dikkat
+      edilecekler</strong>, <strong>Orta seviyede</strong> ve <strong>Öne
+      çıkanlar</strong>. Bir değerin hangi bölümde görüneceği, o değerin bu
+      üründeki seviyesine göre değişir. Seviyeler aşağıdaki yayımlanmış
+      eşiklere dayanır; tüm değerler 100 g veya 100 ml başınadır.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Besin</th><th>Seviyeler</th><th>Kaynak</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Şeker</td>
+            <td>Düşük: 5 g ve altı · Orta · Yüksek: 22,5 g üstü</td>
+            <td rowspan="3">Birleşik Krallık Sağlık Bakanlığı ve Gıda Standartları Ajansı (FSA), <em>Guide to creating a front of pack (FoP) nutrition label</em> (2016), katı gıda eşikleri</td>
+          </tr>
+          <tr>
+            <td>Tuz</td>
+            <td>Düşük: 0,3 g ve altı · Orta · Yüksek: 1,5 g üstü</td>
+          </tr>
+          <tr>
+            <td>Doymuş yağ</td>
+            <td>Düşük: 1,5 g ve altı · Orta · Yüksek: 5 g üstü</td>
+          </tr>
+          <tr>
+            <td>Protein</td>
+            <td>Yüksek protein düzeyi: enerjinin en az %20'si proteinden · Protein kaynağı düzeyi: en az %12'si · Altı: %12'nin altı</td>
+            <td rowspan="2">Türk Gıda Kodeksi Beslenme Beyanları Yönetmeliği (Resmî Gazete 20.04.2023, sayı 32169), "protein kaynağı / yüksek protein" ve "lif kaynağı / yüksek lif" beyanlarının koşulları</td>
+          </tr>
+          <tr>
+            <td>Lif</td>
+            <td>Yüksek lif düzeyi: 100 g'da en az 6 g veya 100 kcal'de en az 3 g · Lif kaynağı düzeyi: 100 g'da en az 3 g veya 100 kcal'de en az 1,5 g · Altı</td>
+          </tr>
+          <tr>
+            <td>Kafein</td>
+            <td>Yalnızca kişisel uyarı için; 150 mg/l üstü</td>
+            <td>Türk Gıda Kodeksi Gıda Etiketleme ve Tüketicileri Bilgilendirme Yönetmeliği, Ek-2: "yüksek miktarda kafein içerir" ibaresinin zorunlu olduğu sınır</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul>
+      <li>
+        <strong>Protein</strong> eşiği ürünün enerji değerine göre hesaplanır (1 g
+        protein = 4 kcal). Ürünün enerji değeri yoksa protein değerlendirilmez;
+        miktarı gösterilir ama bir seviye verilmez.
+      </li>
+      <li>
+        <strong>İçecekler için ayrı eşik uygulanmaz.</strong> FSA içecekler için
+        daha düşük eşikler tanımlar, ancak bir ürünün içecek olup olmadığını
+        güvenilir biçimde ayırt edemiyoruz: Open Food Facts'teki kategori
+        bilgisi aynı türdeki ürünlerde tutarsız olabiliyor. Besin değerleri
+        neredeyse aynı iki ürünün farklı eşiklerle değerlendirilmemesi için tüm
+        ürünlerde katı gıda eşikleri kullanılır. Bu eşikler içecekler için daha
+        esnektir.
+      </li>
+      <li>
+        <strong>Enerji, toplam yağ ve karbonhidrat</strong> için renkli seviye
+        gösterilmez; bu değerler "Diğer besin değerleri" bölümünde yalnızca
+        bilgi olarak yer alır. Yayımlanmış bir "yüksek enerji" eşiği yoktur;
+        enerji ihtiyacı kişiye ve tüketilen miktara göre değişir.
+      </li>
+      <li>
+        <strong>Katkı maddeleri</strong> satırı, Open Food Facts'in içerik
+        listesinde tespit ettiği E-kodu sayısını gösterir (0, 1–2, 3 ve üzeri).
+        Bu satır tek tek katkı maddeleri hakkında bir değerlendirme değildir;
+        her maddenin ayrıntısı aşağıda açıklanan panelde yer alır.
+      </li>
+      <li>
+        Bir ürünün besin değerleri yoksa ama Nutri-Score harfi varsa, satırlar
+        harften türetilen kaba bir <strong>tahmin</strong> gösterir ve
+        "(tahmini)" olarak işaretlenir. Tahmini satırlar sayı içermez, kişisel
+        uyarılarda kullanılmaz ve bölümler arasında yer değiştirmez.
+      </li>
+    </ul>
+
+    <h2>Kişisel uyarılar nasıl çalışıyor</h2>
+
+    <p>
+      Profilinizde seçtiğiniz alerjenler, beslenme tercihleri, özel durumlar ve
+      hassasiyetler doğrultusunda, taradığınız ürünle ilgili size özel uyarılar
+      gösteririz. Uyarılar üç seviyededir: <strong>Kritik</strong> (ör.
+      seçtiğiniz bir alerjenin ürünün alerjen listesinde yer alması),
+      <strong>Dikkat</strong> (ör. hassasiyetinize göre yüksek şeker, beslenme
+      tercihinize uymayan içerik) ve <strong>Bilgi</strong> (ör. belirsiz bir
+      sinyal ya da yüksek protein tercihinizin karşılanmaması).
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>Temel ilkemiz: emin olmadığımız bir içeriği kesin bir alerjen
+        olarak etiketlemeyiz.</strong> Bir içerik ürünün bilgisinde net şekilde
+        belirtilmemişse, bunu kesin bir uyarı yerine daha temkinli bir dille
+        ("içerebilir", "kesin değildir") ve daha düşük bir seviyede ifade
+        ederiz.
+      </p>
+      <p>
+        <strong>Bir üründe uyarı görmemeniz, o ürünün sizin için uygun olduğu
+        anlamına gelmez.</strong> Uyarılar yalnızca eldeki veriye dayanır ve veri
+        eksik, hatalı ya da güncel olmayabilir. Ambalajdaki içindekiler ve
+        alerjen bilgisi her zaman esastır.
+      </p>
+    </div>
+
+    <ul>
+      <li>
+        <strong>Alerjen ve beslenme tercihleri</strong> için bilgiye şu sırayla
+        bakılır: önce ürünün alerjen listesi, o yoksa içindekiler metni. İkisi de
+        yoksa ve ürün adı açık bir işaret taşıyorsa (ör. et ürünü adları), ürün
+        adından çıkarılan sinyal yalnızca "Bilgi" seviyesinde ve "kesin değildir"
+        ifadesiyle gösterilir. "Eser miktarda içerebilir" bölümünden gelen bilgi
+        bir seviye düşük gösterilir.
+      </li>
+      <li>
+        Süt alerjisi ile laktoz tercihi ayrı değerlendirilir: laktozsuz etiketi
+        laktoz uyarısını kaldırır, süt alerjisi uyarısını kaldırmaz.
+      </li>
+      <li>
+        <strong>Hassasiyet uyarıları</strong> (düşük şeker, tuz, doymuş yağ;
+        kafein) yukarıdaki tablodaki "yüksek" sınırının üzerinde tetiklenir.
+        Orta seviye uyarı üretmez. Yüksek protein tercihi, ürünün enerjisinin
+        %12'den azı proteinden geliyorsa bilgi notu üretir. Değer bilinmiyorsa
+        hiçbir uyarı üretilmez; "veri yok" hiçbir zaman "yok" sayılmaz.
+      </li>
+      <li>
+        <strong>Çocuk</strong> seçimi şeker, tuz ve kafein; <strong>65 yaş
+        üstü</strong> seçimi tuz, şeker, doymuş yağ ve kafein için aynı eşiklerle
+        uyarı üretir. Yaşa özel ayrı bir eşik kullanılmaz. Çocuk seçiliyken
+        kategori bilgisine göre enerji içeceği olarak sınıflandırılmış ürünlerde
+        "Dikkat" seviyesinde uyarı gösterilir; kategori bilgisi yoksa ve ürün
+        adı bir enerji içeceğini işaret ediyorsa uyarı "Bilgi" seviyesinde ve
+        "kesin değildir" ifadesiyle verilir.
+      </li>
+      <li>
+        <strong>Hamilelik</strong> seçimi, içindekiler metninde çiğ veya
+        pastörize edilmemiş süt ya da peynir ifadesi geçen ürünlerde "Dikkat"
+        seviyesinde uyarı üretir.
+      </li>
+      <li>
+        Uygulama hiçbir hastalık adı sormaz ve hastalığa özel öneri vermez.
+      </li>
+    </ul>
+
+    <h2>Katkı maddeleri hakkında</h2>
+
+    <p>
+      Ürünlerdeki katkı maddelerini (E-kodları) ne işe yaradıklarıyla birlikte
+      gösteririz. Türkiye'de en çok taranan ürünlerde en sık geçen 50 kod için
+      bilgi hazırladık;
+      bilgisi olmayan bir kod için yalnızca kodu ve "bu kod için bilgi
+      bulunamadı" notunu gösteririz, açıklama uydurmayız.
+    </p>
+
+    <p>
+      Her kod için, varsa, Avrupa Gıda Güvenliği Otoritesi'nin (EFSA)
+      değerlendirmesine dayanan <strong>aşırı alım olasılığı</strong> sınıfı
+      gösterilir (Open Food Facts katkı maddesi sınıflandırmasından). Bu sınıf
+      bir tehlike ya da risk ölçüsü değildir: EFSA'nın, bazı yaş gruplarında o
+      maddenin tüm beslenmeden gelen toplam alımının kabul edilebilir günlük
+      miktarı aşıp aşmayabileceğine dair tahminidir. Bir katkı maddesinin
+      listelenmesi, o maddenin zararlı olduğu anlamına gelmez. Sağlıkla ilgili
+      tek ek bilgi, mevzuatın ambalajda zorunlu tuttuğu ibarelerdir (ör.
+      sülfitlerin alerjen olması).
+    </p>
+
+    <h2>Vitaminler ve mineraller</h2>
+
+    <p>
+      Ürünün besin değerlerinde beyan edilmiş vitamin ve mineraller miktarlarıyla
+      gösterilir; değeri 0 olan ya da beyan edilmemiş olanlar listelenmez. Bu
+      bölüm puanı ve uyarıları etkilemez ve hiçbir renk ya da seviye taşımaz.
+      Açıklamalar, besin ögesinin vücuttaki genel işlevini anlatan izinli sağlık
+      beyanlarından (Avrupa Birliği Tüzüğü 432/2012) kısaltılarak
+      Türkçeleştirilmiştir; ürün hakkında bir beyan değildir. Türkiye'de gıdalarda
+      sağlık beyanları, 20.04.2023 tarihli Gıda ve Takviye Edici Gıdalarda Sağlık
+      Beyanı Kullanımı Hakkında Yönetmelik ile düzenlenir.
+    </p>
+
+    <h2>Alternatif öneriler nasıl seçiliyor</h2>
+
+    <p>
+      Bir ürünü taradığınızda, veritabanımızda aynı kategoride ve genel puanı
+      daha yüksek başka ürünler varsa bunlar "alternatif" olarak gösterilir.
+      Öneri bir ürün hakkında genel bir üstünlük iddiası değil, bu sayfada
+      anlatılan kurallara göre yapılmış bir <strong>puan
+      karşılaştırmasıdır</strong>.
+    </p>
+
+    <ul>
+      <li>
+        <strong>Aynı kategori:</strong> önce Open Food Facts'in dilden bağımsız
+        kategori etiketleri en özelden genele doğru denenir (ör. "UHT sütler",
+        sonra "sütler"); hiçbiri sonuç vermezse ürünün kategori metni
+        kullanılır.
+      </li>
+      <li>
+        <strong>Daha yüksek puan:</strong> alternatifin puanı taranan ürününkinden
+        yüksek olmalıdır; bir puanlık fark yeterlidir, eşit puan yeterli değildir.
+        Puanı olmayan ürün önerilmez ve taranan ürünün puanı yoksa öneri
+        yapılmaz.
+      </li>
+      <li>
+        <strong>Profilinize uygunluk:</strong> profilinize göre "Kritik" uyarı
+        üreten bir ürün önerilmez. Henüz incelenmemiş topluluk katkıları da
+        önerilmez.
+      </li>
+      <li>
+        Yalnızca veritabanımızda bulunan ürünler karşılaştırılır; bu yüzden
+        piyasadaki her alternatif listede yer almaz.
+      </li>
+      <li>
+        Hiçbir marka öneri listesine girmek ya da sırasını değiştirmek için ödeme
+        yapamaz.
+      </li>
+    </ul>
+
+    <h2>Kullanıcı katkılı ürünler</h2>
+
+    <p>
+      Veritabanımızda ve Open Food Facts'te bulunmayan bir ürünü kullanıcılarımız
+      ekleyebilir. Bu ürünler bir kişi tarafından incelenene kadar kişisel uyarı
+      sisteminde ve önerilerde kullanılmaz; uygulamada "topluluk katkısı,
+      henüz incelenmedi" şeklinde açıkça belirtilir.
+    </p>
+
+    <h2>Hatalı bilgi bildirimi ve üretici itirazı</h2>
+
+    <p>
+      Bir ürünle ilgili yanlış veya eksik bilgi tespit ettiyseniz, ya da ürünün
+      üreticisi veya markası olarak bir değerlendirmeye itiraz etmek
+      istiyorsanız, bize
+      <a href="mailto:kulatue@gmail.com">kulatue@gmail.com</a> adresinden
+      ulaşabilirsiniz. İncelemeyi hızlandırmak için lütfen şunları iletin:
+    </p>
+
+    <ul>
+      <li>ürünün barkod numarası,</li>
+      <li>hatalı olduğunu düşündüğünüz bilgi ve doğrusu,</li>
+      <li>
+        mümkünse dayanağı (ambalajın ilgili yüzünün fotoğrafı ya da ürün
+        teknik föyü).
+      </li>
+    </ul>
+
+    <p>
+      Bildirimlere <span class="fill">7 gün</span> içinde yanıt veririz. Doğrulanan
+      hatalar <span class="fill">30 gün</span> içinde veritabanımızda düzeltilir.
+      Hatalı bilgi Open Food Facts kaynaklıysa, düzeltmenin Open Food Facts'e de
+      yapılmasını öneririz; aksi halde bilgi bir sonraki güncellemede yeniden
+      eski haline dönebilir. Değerlendirme kurallarına (eşikler, puanlama)
+      yapılan itirazlar da incelenir ve kabul edilen değişiklikler bu sayfanın
+      değişiklik geçmişinde yayımlanır.
+    </p>
+
+    <h2>Feragatname</h2>
+
+    <p>
+      NeYiyorum, kamuya açık verilere dayalı bir bilgilendirme aracıdır; tıbbi
+      teşhis, tedavi veya kişiye özel sağlık tavsiyesi sunmaz. Veriler eksik,
+      hatalı veya güncel olmayabilir ve ambalajdaki etiket her zaman esastır.
+      Sağlık durumunuzla ilgili kararlar için lütfen bir sağlık uzmanına
+      danışın.
+    </p>
+
+    <h2>Değişiklik geçmişi</h2>
+
+    <ul>
+      <li>
+        <strong>Sürüm 2.0 · 17 Eylül 2026:</strong> Besin değeri eşikleri
+        yayımlanmış kaynaklara bağlandı (şeker "yüksek" sınırı 12,5 g'dan FSA'nın
+        22,5 g'ına; protein ve lif Türk Gıda Kodeksi beslenme beyanı koşullarına);
+        enerji renkli seviyeden çıkarılıp bilgi bölümüne taşındı; puan bantları
+        Nutri-Score harf aralıklarıyla hizalandı (beş bant); bölüm adları
+        değişti; ürün ekranına veri tarihi eklendi; alternatif önerilerin, katkı
+        maddelerinin, kişisel uyarıların ve itiraz sürecinin açıklamaları
+        genişletildi.
+      </li>
+      <li>
+        <strong>Sürüm 1.0 · 16 Eylül 2026:</strong> İlk yayın.
+      </li>
+    </ul>
+
+    <p class="note"><em>Bu sayfa en son 17 Eylül 2026 tarihinde güncellenmiştir.</em></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>NeYiyorum</p>
+    <p>
+      <a href="metodoloji.html">Metodoloji</a> ·
+      <a href="kvkk.html">KVKK</a> ·
+      <a href="mailto:kulatue@gmail.com">kulatue@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
