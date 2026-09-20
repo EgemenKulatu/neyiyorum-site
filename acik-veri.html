@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Açık Veri — NeYiyorum</title>
+<meta name="description" content="NeYiyorum'un Open Food Facts'ten türettiği ürün veritabanının ODbL altında herkese açık dökümü, lisansı ve Open Food Facts'ten farkları.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true">
+        <path d="M6 22c0-7 5.5-12 15-12 0 9-5 14-15 14z" fill="currentColor"/>
+        <path d="M6 25c2-5 5.5-8.5 10.5-11" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+      </svg>
+      NeYiyorum
+    </a>
+    <nav class="site-nav" aria-label="Site navigasyonu">
+      <a href="index.html">Ana Sayfa</a>
+      <a href="metodoloji.html">Metodoloji</a>
+      <a href="kvkk.html">KVKK Aydınlatma Metni</a>
+      <a href="kullanim-kosullari.html">Kullanım Koşulları</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>Açık Veri</h1>
+
+    <p class="lead">
+      NeYiyorum'un Open Food Facts'ten (OFF) aldığı ürün bilgilerinden oluşan
+      veritabanı, OFF'un lisansı gereği herkese açıktır. Bu sayfa o veritabanının
+      dökümünü, lisansını ve OFF'tan hangi noktalarda farklı olduğunu anlatır.
+    </p>
+
+    <div class="callout">
+      <p>
+        <strong>İndir:</strong>
+        <a href="veri/products_odbl.json">veri/products_odbl.json</a>
+        (JSON, lisans notu dosyanın başında). Lisans:
+        <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License (ODbL) 1.0</a>.
+      </p>
+    </div>
+
+    <h2>Bu dosya nedir?</h2>
+
+    <p>
+      Uygulamada bir barkodu okuttuğunuzda ürün bilgisi önce kendi veritabanımızda
+      aranır; orada yoksa Open Food Facts'ten çekilip kaydedilir. Bu sayfadaki
+      dosya, OFF'tan gelen ürünlerin saklandığı tablonun (<code>products_odbl</code>)
+      tamamının kopyasıdır. Open Food Facts, dünya çapında gönüllülerin oluşturduğu
+      açık bir gıda veritabanıdır; bu dosya o verinin bizim biçimimize uyarlanmış
+      bir alt kümesidir.
+    </p>
+
+    <p>
+      <span class="fill">Dosya haftada bir yenilenir; yenilenemezse önceki sürüm
+      yayında kalır. Dosyanın içindeki <code>generated_at</code> alanı üretildiği
+      anı gösterir.</span>
+    </p>
+
+    <h2>Lisans ve atıf</h2>
+
+    <p>
+      Bu veritabanı <strong>ODbL 1.0</strong> altında sunulur. Şartlar kısaca:
+    </p>
+
+    <ul>
+      <li>
+        <strong>Kopyalayabilir, paylaşabilir ve uyarlayabilirsiniz</strong>;
+        ticari amaçla da kullanabilirsiniz.
+      </li>
+      <li>
+        <strong>Atıf yapmalısınız:</strong> "Contains information from Open Food
+        Facts (openfoodfacts.org), made available under the Open Database License
+        (ODbL). © Open Food Facts contributors." ya da bunun Türkçesi.
+      </li>
+      <li>
+        <strong>Aynı lisansla paylaşmalısınız:</strong> bu veritabanından
+        türettiğiniz bir veritabanını kamuya sunuyorsanız onu da ODbL altında
+        (ya da uyumlu bir lisansla) sunmalı ve lisans notunu korumalısınız.
+      </li>
+    </ul>
+
+    <p>
+      Tek tek ürün bilgileri
+      <a href="https://opendatacommons.org/licenses/dbcl/1-0/">Database Contents License (DbCL) 1.0</a>
+      altındadır. Ürün fotoğrafları, fotoğrafları çekenlerin
+      <a href="https://creativecommons.org/licenses/by-sa/3.0/deed.tr">CC BY-SA 3.0</a>
+      lisansı altındadır; dosyada fotoğrafların kendisi değil, yalnızca bağlantıları
+      (<code>image_url</code>) bulunur. Ambalaj üzerindeki marka, logo ve tasarımlar
+      ilgili hak sahiplerine aittir. Veri olduğu gibi sunulur; doğruluğu garanti
+      edilmez.
+    </p>
+
+    <h2>Dosyanın biçimi</h2>
+
+    <p>Dosya tek bir JSON nesnesidir:</p>
+
+    <ul>
+      <li><code>notice</code>: lisans, atıf ve paylaşım şartı metinleri.</li>
+      <li><code>generated_at</code>, <code>row_count</code>: üretildiği an ve ürün sayısı.</li>
+      <li>
+        <code>products</code>: her ürün için bir nesne. Alanlar: <code>barcode</code>,
+        <code>name</code>, <code>brand</code>, <code>category</code>,
+        <code>categories_tags</code>, <code>ingredients_text</code>,
+        <code>allergens</code>, <code>labels</code>, <code>additives</code>,
+        <code>nutriscore_grade</code>, <code>image_url</code>, 100 g/ml başına
+        besin değerleri (<code>energy_kcal_100g</code>, <code>fat_100g</code>,
+        <code>saturated_fat_100g</code>, <code>carbohydrates_100g</code>,
+        <code>sugars_100g</code>, <code>fiber_100g</code>,
+        <code>proteins_100g</code>, <code>salt_100g</code>,
+        <code>caffeine_100g</code>) ve vitamin/mineral alanları
+        (<code>vitamin_c_100g</code>, <code>calcium_100g</code> gibi, hepsi
+        <code>_100g</code> ile biter, gram cinsindendir). Veri yoksa alan
+        <code>null</code>'dır; <code>null</code> "yok" demek değil, "bilinmiyor"
+        demektir.
+      </li>
+    </ul>
+
+    <h2>Open Food Facts'ten farkı: yaptığımız değişiklikler</h2>
+
+    <p>
+      ODbL, uyarlanmış bir veritabanı sunanların değişikliklerin yöntemini
+      açıklamasını ister. Open Food Facts kaydından bu veritabanına geçerken
+      yalnızca şunları yapıyoruz:
+    </p>
+
+    <ol>
+      <li>
+        <strong>Alan seçimi:</strong> OFF bir ürün için yüzlerce alan verir;
+        yalnızca yukarıda sayılanları alıyoruz.
+      </li>
+      <li>
+        <strong>Ad değişikliği:</strong> OFF'taki tireli anahtarlar alt çizgili
+        sütunlara çevrilir (<code>saturated-fat_100g</code> →
+        <code>saturated_fat_100g</code>, <code>vitamin-b12_100g</code> →
+        <code>vitamin_b12_100g</code>).
+      </li>
+      <li>
+        <strong>Etiket dizileri:</strong> <code>en:</code> gibi dil önekleri
+        atılır (<code>en:milk</code> → <code>milk</code>). Katkı maddesi kodları
+        küçük harfe çevrilir (<code>E322</code> → <code>e322</code>).
+      </li>
+      <li>
+        <strong>Katkı maddesi alt türleri:</strong> aynı maddenin hem genel hem alt
+        türü etiketlenmişse (ör. <code>e322</code> ve <code>e322i</code>) yalnızca
+        genel kod tutulur.
+      </li>
+      <li>
+        <strong>Enerji:</strong> kcal değeri varsa aynen alınır; yalnızca kJ
+        varsa 4,184'e bölünerek kcal'e çevrilir.
+      </li>
+      <li>
+        <strong>Nutri-Score:</strong> yalnızca geçerli harf (a–e) alınır;
+        "unknown" gibi diğer değerler boş bırakılır.
+      </li>
+      <li>
+        <strong>Sayısal değerler:</strong> sayı olmayan ya da negatif değerler
+        boş bırakılır; eksik değer 0'a çevrilmez.
+      </li>
+      <li>
+        <strong>Ad, içindekiler ve görsel:</strong> Türkçe sürüm varsa o
+        (<code>product_name_tr</code>, <code>ingredients_text_tr</code>), yoksa
+        genel alan kullanılır; görsel olarak ön yüz fotoğrafı tercih edilir.
+      </li>
+      <li>
+        <strong>Bizim eklediğimiz alanlar:</strong> <code>id</code>,
+        <code>created_at</code>, <code>updated_at</code> (kaydın bizde oluştuğu ve
+        değiştiği an) ile <code>source</code> (bu dosyada hep <code>off</code>) ve
+        <code>review_status</code> (hep <code>verified</code>).
+      </li>
+    </ol>
+
+    <p>
+      Kayıtlar Open Food Facts'ten yeniden çekilerek güncellenir; güncelleme de aynı
+      dönüşümlerle yapılır.
+    </p>
+
+    <h2>Bu dosyada olmayanlar</h2>
+
+    <ul>
+      <li>
+        <strong>Kullanıcılarımızın eklediği ürünler.</strong> Onlar ayrı bir
+        tabloda tutulur ve bu dosyaya girmez.
+      </li>
+      <li>
+        <strong>Kişisel veri.</strong> Dosyada kullanıcıya ait hiçbir bilgi yoktur
+        (profil tercihleri ve tarama geçmişi zaten cihazlarda kalır, bkz.
+        <a href="kvkk.html">KVKK Aydınlatma Metni</a>).
+      </li>
+      <li>
+        <strong>Uygulamanın kodu, puanlama kuralları ve uyarı kuralları.</strong>
+        Bunlar Open Food Facts verisi değildir; yöntemleri
+        <a href="metodoloji.html">Metodoloji</a> sayfasında açıklanmıştır.
+      </li>
+    </ul>
+
+    <h2>İletişim</h2>
+
+    <p>
+      Bu veri seti hakkındaki sorularınız için:
+      <a href="mailto:kulatue@gmail.com">kulatue@gmail.com</a>
+    </p>
+
+    <p class="note"><em>Bu sayfa en son 20 Eylül 2026 tarihinde güncellenmiştir.</em></p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>NeYiyorum</p>
+    <p>
+      <a href="metodoloji.html">Metodoloji</a> ·
+      <a href="kvkk.html">KVKK</a> ·
+      <a href="kullanim-kosullari.html">Kullanım Koşulları</a> ·
+      <a href="acik-veri.html">Açık Veri</a> ·
+      <a href="mailto:kulatue@gmail.com">kulatue@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

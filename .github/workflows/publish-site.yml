@@ -1,0 +1,106 @@
+# Siteyi yayınlar ve OFF kaynaklı ürün veritabanının dökümünü (ODbL) yeniler.
+#
+# NE ZAMAN ÇALIŞIR
+#   - Her pazartesi 03:17 UTC (zamanlanmış; sen bir şey yapmazsın),
+#   - main'e her push'ta (site metni değişince),
+#   - Actions sekmesinden elle ("Run workflow").
+#
+# NE YAPAR
+#   1. Site sayfalarını toplar.
+#   2. Supabase'teki products_odbl tablosunu okuyup veri/products_odbl.json
+#      dökümünü üretir (scripts/export-products-odbl.mjs; lisans notu içinde).
+#   3. Hepsini GitHub Pages'e yayınlar.
+#
+# DÖKÜM ÜRETİLEMEZSE
+#   Site YİNE yayınlanır (KVKK ve koşullar sayfaları bu yüzden yayından düşmez),
+#   yayındaki son döküm korunur ve çalışma en sonda KIRMIZI işaretlenir; GitHub
+#   sana e-posta atar. Sebep genelde: anahtarlar girilmemiş, Supabase'e
+#   ulaşılamıyor ya da döküm güvenlik kapılarına takıldı (kullanıcı verisi
+#   sızmış olabilir / önceki dökümden çok küçük). Ayrıntı: Actions > çalışma > log.
+#
+# TEK SEFERLİK KURULUM: README.md > "Otomatik yayın kurulumu".
+
+name: Siteyi yayınla ve OFF veri dökümünü yenile
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '17 3 * * 1'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Döküm yayındakinden çok küçük olsa da yayınla (önbellek bilerek temizlendiyse)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Aynı anda iki yayın çakışmasın; çalışan yayın yarıda kesilmesin.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # Pages açık değilse burada anlaşılır bir hata verir (README'deki kurulum).
+      - id: pages
+        uses: actions/configure-pages@v5
+
+      # Yalnızca AÇIKÇA sayılan dosyalar yayınlanır: README, betikler ve .github
+      # siteye çıkmaz.
+      - name: Sayfaları topla
+        run: |
+          mkdir -p _site/veri
+          cp *.html style.css favicon.svg _site/
+
+      - name: OFF kaynaklı veri dökümünü üret
+        id: export
+        continue-on-error: true
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          FORCE: ${{ inputs.force }}
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: >
+          node scripts/export-products-odbl.mjs
+          --out _site/veri/products_odbl.json
+          --site-url "$SITE_URL"
+          --previous-url "$SITE_URL/veri/products_odbl.json"
+
+      - name: Döküm üretilemediyse yayındaki son dökümü koru
+        if: steps.export.outcome == 'failure'
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          curl -fsS "$SITE_URL/veri/products_odbl.json" -o _site/veri/products_odbl.json \
+            || { rm -f _site/veri/products_odbl.json; echo "Yayında korunacak önceki döküm yok."; }
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
+
+      # Site yayınlandı; ama döküm yenilenemediyse çalışma kırmızı bitsin ki
+      # e-posta gelsin ve sessizce eskimesin.
+      - name: Döküm üretilemediyse çalışmayı başarısız işaretle
+        if: steps.export.outcome == 'failure'
+        run: |
+          echo "::error::products_odbl dökümü üretilemedi. Site yayınlandı, döküm güncellenmedi (varsa önceki döküm korundu). Nedeni için 'OFF kaynaklı veri dökümünü üret' adımının loguna bak."
+          exit 1
