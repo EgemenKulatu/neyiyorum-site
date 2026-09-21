@@ -52,11 +52,9 @@
     <h2>1. Veri Sorumlusu</h2>
 
     <p>
-      Bu aydınlatma metni kapsamında veri sorumlusu
-      <span class="fill">[veri sorumlusunun tam unvanı]</span> olup, iletişim
-      bilgileri şöyledir: adres
-      <span class="fill">[açık adres]</span>, e-posta
-      <a href="mailto:kulatue@gmail.com">kulatue@gmail.com</a>.
+      Bu aydınlatma metni kapsamında veri sorumlusu Egemen Kulatu (gerçek kişi)
+      olup, iletişim bilgileri şöyledir: yerleşim yeri İzmir / Narlıdere,
+      e-posta <a href="mailto:kulatue@gmail.com">kulatue@gmail.com</a>.
       NeYiyorum, gıda ürünlerinin barkodu okutularak beslenme bilgisi ve
       kullanıcının kendi tercihlerine göre uyarı gösteren bir mobil
       uygulamadır.
@@ -98,16 +96,36 @@
     <h3>2.2. Ürün sorgusu sırasında oluşan teknik veriler</h3>
 
     <p>
-      Bir barkod okuttuğunuzda, ürün bilgisini getirmek için önce kendi ürün
-      veritabanımıza, orada bulunamazsa doğrudan Open Food Facts sunucusuna bir
-      istek gönderilir. Ürün görselleri ise, ürün veritabanımızda olsa bile,
-      doğrudan Open Food Facts'in görsel sunucusundan (images.openfoodfacts.org)
-      yüklendiği için uygulamada her görsel gösterildiğinde de Open Food Facts'e
-      bir istek gönderilir. Bu isteklerde yalnızca barkod numarası ve internet
-      bağlantısının teknik bilgileri (IP adresi, istek zamanı gibi) iletilir;
-      bunlar altyapı sağlayıcılarının sunucu kayıtlarında (log) tutulabilir. Bu
-      kayıtları bir kullanıcı hesabıyla veya profil tercihlerinizle
-      eşleştirmeyiz.
+      Bir barkod okuttuğunuzda ürün bilgisi önce ürün veritabanımızda
+      (Supabase) aranır. Orada bulunamazsa ürünü Open Food Facts'ten
+      <strong>sizin cihazınız değil, sunucu tarafında çalışan bir fonksiyonumuz</strong>
+      (Supabase Edge Function) getirir ve veritabanımıza kaydeder. Bu yüzden ürün
+      bilgisi sorgusunda IP adresiniz Open Food Facts'e ulaşmaz: Open Food
+      Facts'e yalnızca sorgulanan barkod numarası ve bizim sunucumuzun bağlantı
+      bilgisi gider. Uygulamadan sunucumuza giden istekte barkod numarası ve
+      internet bağlantısının teknik bilgileri (IP adresi, istek zamanı gibi) yer
+      alır; bunlar altyapı sağlayıcımızın (Supabase) sunucu kayıtlarında (log)
+      tutulabilir. Bu kayıtları bir kullanıcı hesabıyla veya profil
+      tercihlerinizle eşleştirmeyiz.
+    </p>
+
+    <p>
+      Ürün <strong>görselleri</strong> ise, ürün veritabanımızda olsa bile,
+      doğrudan Open Food Facts'in görsel sunucusundan
+      (images.openfoodfacts.org) yüklenir. Bu nedenle uygulamada bir görsel
+      gösterildiğinde IP adresiniz ve istek zamanınız Open Food Facts'in görsel
+      sunucusuna ulaşır.
+    </p>
+
+    <p>
+      Open Food Facts'e giden istek sayısını sınırlamak için sunucumuz bir
+      <strong>sorgu defteri</strong> tutar: yalnızca barkod numarası, sorgunun
+      sonucu (bulundu, Open Food Facts'te yok ya da hata) ve zaman damgası. Bu
+      deftere IP adresi, cihaz bilgisi ya da başka hiçbir kullanıcı bilgisi
+      yazılmaz; kayıtlar kişiyle ilişkilendirilemez. Open Food Facts'te olmayan
+      bir barkodun 24 saat boyunca yeniden sorulmaması için de bu defter
+      kullanılır. 3 günden eski kayıtlar sunucunun sonraki sorgu işleminde
+      otomatik olarak silinir.
     </p>
 
     <h3>2.3. Ürün ekleme (topluluk katkısı)</h3>
@@ -140,6 +158,16 @@
       talep edebilirsiniz. Ambalaj dışında bir şeyin (kişi, belge gibi)
       göründüğü fotoğraflar inceleme sırasında hemen silinir. Fotoğrafların ne
       kadar saklandığı 7. bölümde yazılıdır.
+    </p>
+
+    <p>
+      <strong>Kabul kaydı:</strong> başvuruyu gönderirken işaretlediğiniz
+      onay kutusuyla kabul ettiğiniz Kullanım Koşulları'nın <em>sürüm numarası</em>
+      (ör. 1.5) başvuruyla birlikte saklanır; kabul zamanı başvurunun kayıt
+      zamanıdır. Bu kayıt sizi tanımlayan bir bilgiyle (hesap, e-posta, cihaz
+      numarası) eşleştirilmez. Başvuru sayısını ve yüklemeleri sınırlamak için
+      veritabanı yalnızca satır sayılarını (bir barkod için bekleyen başvuru,
+      son 24 saatteki toplam) sayar; bu sayımlar kişiye bağlı değildir.
     </p>
 
     <h3>2.4. Kamera</h3>
@@ -191,6 +219,28 @@
       </p>
     </div>
 
+    <h3>2.6. Hata bildirimi ve itiraz (e-posta)</h3>
+
+    <p>
+      Uygulamada her ürün ekranının altında "Bu üründe hata mı var? Bildir /
+      itiraz et" bağlantısı bulunur. Bağlantı, <strong>kendi e-posta
+      uygulamanızda</strong> ürün bilgileriyle (barkod, ürün adı, veri kaynağı,
+      veri tarihi) doldurulmuş bir taslak açar; uygulamanın kendisi bir form ya da
+      sunucu üzerinden bildirim toplamaz. Taslağa profilinizdeki sağlık
+      tercihleri (alerjen, hamilelik vb.) <strong>eklenmez</strong>.
+    </p>
+
+    <p>
+      Taslağı gönderirseniz e-posta adresiniz, e-postanın içeriği (kendi yazdığınız
+      bilgiler dahil) ve gönderim zamanı bize ulaşır; bunlar bir kişisel veridir.
+      Amaç bildirimi değerlendirmek, yanıtlamak ve düzeltmeyi kaydetmektir; ilgili
+      ürünün üreticisinden gelen itirazlarda ayrıca bir hakkın tesisi ve
+      korunması için kaydı tutulur. Hukuki sebep ve saklama süresi 5 ve 7.
+      bölümlerdedir. Yazışmalar e-posta hizmet sağlayıcımız üzerinden yürütülür
+      (bkz. 6). Lütfen bildiriminize gereksiz kişisel bilgi (sağlık durumunuz,
+      adresiniz vb.) yazmayınız.
+    </p>
+
     <h2>3. Kişisel Verilerin İşlenme Amaçları</h2>
 
     <ul>
@@ -222,7 +272,9 @@
         bilgilerdir. <strong>Bugün bu veriler yalnızca cihazınızda tutulduğu ve
         hiçbir kimlikle eşleşmediği için, tarafımızca işlenen bir kişisel veri
         oluşturmaz.</strong> Uygulamada reklam ve analitik bulunmadığı için
-        hiçbir üçüncü tarafa da iletilmez (bkz. 2.5).
+        hiçbir üçüncü tarafa da iletilmez (bkz. 2.5). Cihazınızın yedekleme
+        özelliği açıksa bu seçimler kendi yedeğinize girebilir; o yedek sizin
+        hesabınızdadır, tarafımızca erişilemez (bkz. 2.1).
       </p>
     </div>
 
@@ -268,9 +320,21 @@
         üretimi durur. Bunun için bize başvurmanız gerekmez.
       </li>
       <li>
+        <strong>Veri sorumlusu ve yedek bilgisi:</strong> rıza penceresinde veri
+        sorumlusunun kimliği (Egemen Kulatu, İzmir / Narlıdere, e-posta adresi)
+        ve cihaz yedeği bilgisi de yazılıdır: cihazınızın yedekleme özelliği
+        açıksa seçimleriniz yedeğe girebilir; yedek sizin hesabınızdadır ve
+        bizim erişimimiz yoktur. Rızanızı geri aldığınızda seçimler
+        cihazdan silinir; <strong>daha önce alınmış bir yedekteki kopya
+        silinmeyebilir</strong>, yedeği kendi hesabınızdan yönetebilirsiniz.
+      </li>
+      <li>
         <strong>Kaydı:</strong> rıza verdiğiniz an ve okuduğunuz metnin sürümü
         cihazınızda saklanır; bu kayıt da sunucularımıza gönderilmez. Metin
-        esaslı biçimde değişirse rıza yeniden istenir.
+        esaslı biçimde değişirse rıza yeniden istenir. Rıza metni 20 Eylül
+        2026'da güncellendi (sürüm 2: veri sorumlusunun kimliği ve yedek bilgisi
+        eklendi); bu tarihten önceki sürümle rıza vermiş olsanız bile yeni metinle
+        rızanız yeniden istenir.
       </li>
     </ul>
 
@@ -296,6 +360,14 @@
         itiraz edildiğinde dayanağı gösterebilmek için bir hakkın tesisi,
         kullanılması veya korunması (md. 5/2-e).
       </li>
+      <li>
+        <strong>Hata bildirimi ve itiraz e-postaları (bkz. 2.6)</strong>:
+        bildirimi değerlendirip yanıtlamak için veri sorumlusunun meşru menfaati
+        (md. 5/2-f); bir ürün üreticisinin itirazında, yapılan işlemi gösterebilmek
+        için bir hakkın tesisi, kullanılması veya korunması (md. 5/2-e). Kişisel
+        veri talepleriniz ise hukuki yükümlülüğün yerine getirilmesi (md. 5/2-ç)
+        kapsamında yanıtlanır.
+      </li>
     </ul>
 
     <p>
@@ -317,15 +389,25 @@
 
     <ul>
       <li>
-        <strong>Supabase</strong> (veritabanı barındırma hizmeti): ürün
-        veritabanı ve ürün sorgularına ait teknik kayıtlar (bkz. 2.2). Veri
+        <strong>Supabase</strong> (veritabanı ve sunucu fonksiyonu barındırma
+        hizmeti): ürün veritabanı, Open Food Facts sorgusunu yürüten sunucu
+        fonksiyonumuz ve ürün sorgularına ait teknik kayıtlar (bkz. 2.2). Veri
         işleyen sıfatıyla, yalnızca bizim talimatlarımız doğrultusunda çalışır.
       </li>
       <li>
-        <strong>Open Food Facts</strong> (açık ürün veritabanı): yalnızca
-        sorgulanan barkod numarası ve bağlantının teknik bilgileri iletilir.
-        Kimliğinize, hesabınıza veya tercihlerinize dair hiçbir veri
+        <strong>Open Food Facts</strong> (açık ürün veritabanı): ürün bilgisi
+        sorgusunda yalnızca sorgulanan barkod numarası ve sunucumuzun bağlantı
+        bilgisi iletilir; IP adresiniz iletilmez. Ürün görselleri cihazınızdan
+        Open Food Facts'in görsel sunucusuna doğrudan yüklendiği için, görsel
+        isteğinde IP adresiniz ve istek zamanınız Open Food Facts'e ulaşır (bkz.
+        2.2). Kimliğinize, hesabınıza veya tercihlerinize dair hiçbir veri
         gönderilmez.
+      </li>
+      <li>
+        <strong>E-posta hizmet sağlayıcısı (Google / Gmail)</strong>: yalnızca
+        siz bize e-posta gönderirseniz (hata bildirimi, itiraz, KVKK talebi,
+        fotoğraf silme talebi); e-postanızın içeriği ve adresiniz iletişim
+        kutumuzda bu sağlayıcı üzerinden tutulur.
       </li>
       <li>
         <strong>Yetkili kamu kurum ve kuruluşları</strong>: hukuken talep
@@ -359,6 +441,15 @@
         veritabanında kalmaya devam eder. Reddedilen başvuruların metin bilgileri
         (ürün adı, içindekiler vb.) yalnızca inceleme kaydı olarak saklanır,
         yayımlanmaz.
+      </li>
+      <li>
+        <strong>Hata bildirimi ve itiraz yazışmaları (e-posta)</strong>:
+        bildirimin sonuçlanmasından (yanıtlanıp gerekirse düzeltilmesinden)
+        itibaren <strong>1 yıl</strong> saklanır, sonra hem inceleme kaydımızdan
+        hem e-posta kutumuzdan silinir. Bir üretici itirazında yapılan işlemi
+        gösterebilmek bu sürenin amacıdır. Sonuçlanmamış bildirimler sonuçlanana
+        kadar saklanır. Silinmesini bu süre dolmadan iletişim adresimizden de
+        talep edebilirsiniz.
       </li>
       <li>
         <strong>Gönderdiğiniz ambalaj fotoğrafları</strong>:
@@ -455,6 +546,17 @@
         Veritabanında satır düzeyinde erişim kuralları (row level security)
         uygulanır; uygulamanın erişim anahtarı yalnızca gerekli işlemlerle
         sınırlıdır.
+      </li>
+      <li>
+        Open Food Facts kaynaklı ürün kayıtlarını yalnızca sunucu tarafı yazabilir:
+        uygulamanın erişim anahtarıyla bu kayıtlara ekleme, değiştirme ya da silme
+        yapılamaz. Böylece bu kayıtlara sahte veri eklenemez.
+      </li>
+      <li>
+        Ürün başvuruları ve fotoğraf yüklemeleri, kötüye kullanımı sınırlamak için
+        veritabanı düzeyinde biçim, boyut ve sayı sınırlarına tabidir; yükleme
+        deposuna yalnızca uygulamanın ürettiği dosya adı deseniyle ve
+        sınırlı sayıda dosya yazılabilir.
       </li>
       <li>
         Ürün başvuruları ve ambalaj fotoğrafları yalnızca veri sorumlusunun

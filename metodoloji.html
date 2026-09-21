@@ -92,6 +92,16 @@
       zaman esastır.</strong>
     </p>
 
+    <p>
+      Open Food Facts kaynaklı kayıtlar veritabanımıza <strong>yalnızca sunucu
+      tarafındaki bir fonksiyonumuz</strong> tarafından, doğrudan Open Food
+      Facts'in kendi yanıtından alınarak yazılır. Uygulama kullanıcıları bu
+      kayıtları ekleyemez, değiştiremez ya da silemez; yani "Kaynak: Open Food
+      Facts" yazan bir kaydın içeriği bir kullanıcıdan ya da üçüncü bir
+      kaynaktan gelmez. Kullanıcı katkıları ayrı bir tabloda tutulur ve ancak
+      incelemeden sonra yayımlanır (aşağıya bakın).
+    </p>
+
     <h3>Verinin güncelliği</h3>
 
     <p>
@@ -327,7 +337,13 @@
       <li>
         <strong>Hamilelik</strong> seçimi, içindekiler metninde çiğ veya
         pastörize edilmemiş süt ya da peynir ifadesi geçen ürünlerde "Dikkat"
-        seviyesinde uyarı üretir.
+        seviyesinde uyarı üretir. Uyarı cümlesi bir tavsiye vermez; yalnızca
+        iki olguyu söyler: ürün verisinde çiğ / pastörize edilmemiş süte işaret
+        eden bir ifade bulunduğunu ve profilinizde "Hamilelik" seçili olduğunu;
+        ardından ambalajdaki etiketi kontrol etmenizi ister. Kural, içerik
+        metninde geçen ifadenin varlığına bakar ve bir sağlık değerlendirmesi
+        değildir; bu kural için bugün yayımlanmış bir kaynağa
+        dayanmıyoruz ve bu yüzden bir öneri ya da yasak ifadesi kullanmıyoruz.
       </li>
       <li>
         Uygulama hiçbir hastalık adı sormaz ve hastalığa özel öneri vermez.
@@ -475,6 +491,14 @@
     </ul>
 
     <p>
+      Uygulamada her ürün ekranının altındaki <strong>"Bu üründe hata mı var?
+      Bildir / itiraz et"</strong> bağlantısı, e-posta uygulamanızda ürün
+      bilgileriyle (barkod, ürün adı, veri kaynağı, veri tarihi) doldurulmuş bir
+      taslak açar; profilinizdeki sağlık tercihleri taslağa eklenmez. Aynı
+      ekranda bu sayfaya bir bağlantı da bulunur.
+    </p>
+
+    <p>
       Bildirimlere <span class="fill">7 gün</span> içinde yanıt veririz. Doğrulanan
       hatalar <span class="fill">30 gün</span> içinde veritabanımızda düzeltilir.
       Hatalı bilgi Open Food Facts kaynaklıysa, düzeltmenin Open Food Facts'e de
@@ -491,12 +515,30 @@
       teşhis, tedavi veya kişiye özel sağlık tavsiyesi sunmaz. Veriler eksik,
       hatalı veya güncel olmayabilir ve ambalajdaki etiket her zaman esastır.
       Sağlık durumunuzla ilgili kararlar için lütfen bir sağlık uzmanına
-      danışın.
+      danışın. Bu uyarı uygulamada her ürün ekranının altında, kişisel
+      tercihiniz olsun olmasın kalıcı bir not olarak da yer alır.
     </p>
 
     <h2>Değişiklik geçmişi</h2>
 
     <ul>
+      <li>
+        <strong>Sürüm 2.5 · 20 Eylül 2026:</strong> Open Food Facts kaynaklı
+        kayıtların veritabanına yazılması cihazdan sunucu tarafına taşındı:
+        uygulama artık bu kayıtları yazamıyor ve Open Food Facts'e ürün sorgusunu
+        sunucumuz yapıyor. Eskiden uygulamanın kendisi yazıyordu ve bu, uygulamanın
+        erişim anahtarını çıkaran birinin Open Food Facts'ten gelmiş gibi görünen
+        sahte bir kayıt ekleyebilmesi anlamına geliyordu; bu yol kapatıldı.
+        Puanlama, uyarı ve öneri kurallarında değişiklik yok.
+      </li>
+      <li>
+        <strong>Sürüm 2.4 · 20 Eylül 2026:</strong> Hamilelik uyarısının cümlesi
+        tavsiye içermeyecek biçimde değiştirildi (kural, seviye ve tetiklenme
+        koşulu aynı). Ürün ekranına kalıcı feragatname, bu sayfaya bağlantı ve
+        "Hata bildir / itiraz et" bağlantısı eklendi. Ürün başvurusunda Kullanım
+        Koşulları'nın kabulü açık bir onay kutusuyla alınıyor. Puanlama ve öneri
+        kurallarında değişiklik yok.
+      </li>
       <li>
         <strong>Sürüm 2.3 · 20 Eylül 2026:</strong> Kullanıcı katkılı ürünlerin
         incelenirken hangi kontrollerden geçtiği açıklandı (ambalajla
