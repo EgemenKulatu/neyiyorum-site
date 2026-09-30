@@ -81,6 +81,13 @@
         <strong>Tarama geçmişi</strong>: taradığınız ürünlerin barkod numarası
         ve tarama zamanı (en fazla son 50 kayıt).
       </li>
+      <li>
+        <strong>Bildirimlerim listesi</strong>: uygulamadan gönderdiğiniz hata
+        bildirimlerinin takip numarası, ürünün barkodu ve adı, bildirimin konusu
+        ve gönderim zamanı (en fazla 50 kayıt; bkz. 2.6). Bildirimin açıklama
+        metni cihazda saklanmaz. Bildirimin kendisi sunucumuza gider; bu liste
+        yalnızca onu cihazınızda takip etmenize yarar.
+      </li>
     </ul>
 
     <p>
@@ -219,26 +226,48 @@
       </p>
     </div>
 
-    <h3>2.6. Hata bildirimi ve itiraz (e-posta)</h3>
+    <h3>2.6. Hata bildirimi ve itiraz</h3>
 
-    <p>
-      Uygulamada her ürün ekranının altında "Bu üründe hata mı var? Bildir /
-      itiraz et" bağlantısı bulunur. Bağlantı, <strong>kendi e-posta
-      uygulamanızda</strong> ürün bilgileriyle (barkod, ürün adı, veri kaynağı,
-      veri tarihi) doldurulmuş bir taslak açar; uygulamanın kendisi bir form ya da
-      sunucu üzerinden bildirim toplamaz. Taslağa profilinizdeki sağlık
-      tercihleri (alerjen, hamilelik vb.) <strong>eklenmez</strong>.
+    <p><strong>Uygulama içinden bildirim.</strong> Uygulamada her ürün ekranının
+      altında "Bu üründe hata mı var? Bildir / itiraz et" bağlantısı bulunur ve
+      uygulama içinde bir bildirim formu açar. Formu gönderdiğinizde sunucumuza
+      yalnızca şunlar iletilir: ürünün barkodu, ekranda gösterilen veri kaynağı
+      (Open Food Facts ya da topluluk katkısı), bildirimin konusu (ör. alerjen,
+      besin değerleri) ve sizin yazdığınız açıklama. Sunucu bildirimin kayıt
+      zamanını ekler ve size rastgele üretilmiş bir <strong>takip numarası</strong>
+      verir.
     </p>
 
     <p>
-      Taslağı gönderirseniz e-posta adresiniz, e-postanın içeriği (kendi yazdığınız
-      bilgiler dahil) ve gönderim zamanı bize ulaşır; bunlar bir kişisel veridir.
-      Amaç bildirimi değerlendirmek, yanıtlamak ve düzeltmeyi kaydetmektir; ilgili
-      ürünün üreticisinden gelen itirazlarda ayrıca bir hakkın tesisi ve
-      korunması için kaydı tutulur. Hukuki sebep ve saklama süresi 5 ve 7.
-      bölümlerdedir. Yazışmalar e-posta hizmet sağlayıcımız üzerinden yürütülür
-      (bkz. 6). Lütfen bildiriminize gereksiz kişisel bilgi (sağlık durumunuz,
-      adresiniz vb.) yazmayınız.
+      Bildirim adınız, e-posta adresiniz, telefonunuz, cihaz kimliğiniz ya da bir
+      hesapla <strong>eşleştirilmez</strong>; profilinizdeki sağlık tercihleri
+      (alerjen, hamilelik vb.) bildirime <strong>eklenmez</strong>. Takip numarası
+      yalnızca sizin cihazınızda saklanır (bkz. 2.1) ve bildirimin durumunu
+      sorarken sunucuya gönderilir; sunucu bu soruya yalnızca durum ve tarihlerle
+      cevap verir, bildirimin metnini döndürmez. Bildirim metinleri hiçbir
+      kullanıcıya gösterilmez; yalnızca veri sorumlusu inceleme aracıyla görür.
+      Açıklama serbest metin olduğundan, siz yazarsanız kişisel bir bilgi
+      içerebilir: <strong>lütfen adınızı, iletişim bilgilerinizi ya da sağlık
+      durumunuzu (alerjiniz, hamileliğiniz vb.) yazmayınız</strong>; formda da bu
+      uyarı yer alır. Bildirimde yine de kişisel bir bilgi görürsek onu bildirimi
+      değerlendirmek dışında hiçbir amaçla kullanmayız.
+    </p>
+
+    <p><strong>E-posta ile bildirim.</strong> Formun altındaki bağlantı ya da
+      doğrudan <a href="mailto:kulatue@gmail.com">kulatue@gmail.com</a> adresi
+      üzerinden de bildirim, itiraz ya da talep iletebilirsiniz (üretici
+      itirazları ve KVKK başvuruları çoğunlukla bu yoldan gelir). Bağlantı, kendi
+      e-posta uygulamanızda ürün bilgileriyle (barkod, ürün adı, veri kaynağı)
+      doldurulmuş bir taslak açar; profil tercihleriniz taslağa eklenmez. Taslağı
+      gönderirseniz e-posta adresiniz, e-postanın içeriği ve gönderim zamanı bize
+      ulaşır. Yazışmalar e-posta hizmet sağlayıcımız üzerinden yürütülür (bkz. 6).
+    </p>
+
+    <p>
+      Her iki yolda da amaç bildirimi değerlendirmek, sonucunu bildirmek ve
+      yapılan düzeltmeyi kaydetmektir; ilgili ürünün üreticisinden gelen
+      itirazlarda ayrıca bir hakkın tesisi ve korunması için kaydı tutulur.
+      Hukuki sebep ve saklama süresi 5 ve 7. bölümlerdedir.
     </p>
 
     <h2>3. Kişisel Verilerin İşlenme Amaçları</h2>
@@ -361,8 +390,9 @@
         kullanılması veya korunması (md. 5/2-e).
       </li>
       <li>
-        <strong>Hata bildirimi ve itiraz e-postaları (bkz. 2.6)</strong>:
-        bildirimi değerlendirip yanıtlamak için veri sorumlusunun meşru menfaati
+        <strong>Hata bildirimleri (uygulama içi form ve e-posta) ve itirazlar
+        (bkz. 2.6)</strong>: bildirimi değerlendirip sonucunu bildirmek için veri
+        sorumlusunun meşru menfaati
         (md. 5/2-f); bir ürün üreticisinin itirazında, yapılan işlemi gösterebilmek
         için bir hakkın tesisi, kullanılması veya korunması (md. 5/2-e). Kişisel
         veri talepleriniz ise hukuki yükümlülüğün yerine getirilmesi (md. 5/2-ç)
@@ -391,7 +421,8 @@
       <li>
         <strong>Supabase</strong> (veritabanı ve sunucu fonksiyonu barındırma
         hizmeti): ürün veritabanı, Open Food Facts sorgusunu yürüten sunucu
-        fonksiyonumuz ve ürün sorgularına ait teknik kayıtlar (bkz. 2.2). Veri
+        fonksiyonumuz, ürün sorgularına ait teknik kayıtlar (bkz. 2.2) ve
+        uygulama içinden gönderilen hata bildirimleri (bkz. 2.6). Veri
         işleyen sıfatıyla, yalnızca bizim talimatlarımız doğrultusunda çalışır.
       </li>
       <li>
@@ -441,6 +472,14 @@
         veritabanında kalmaya devam eder. Reddedilen başvuruların metin bilgileri
         (ürün adı, içindekiler vb.) yalnızca inceleme kaydı olarak saklanır,
         yayımlanmaz.
+      </li>
+      <li>
+        <strong>Uygulama içinden gönderilen hata bildirimleri</strong>:
+        sonuçlanana kadar ve sonuçlanmasından itibaren <strong>1 yıl</strong>
+        saklanır, sonra veritabanından otomatik olarak silinir. Takip numarasıyla
+        durum sorulduğunda silinmiş bildirim için "kaydı artık tutulmuyor" yazar.
+        Cihazınızdaki Bildirimlerim listesi uygulamayı kaldırana kadar cihazınızda
+        kalır.
       </li>
       <li>
         <strong>Hata bildirimi ve itiraz yazışmaları (e-posta)</strong>:
@@ -559,6 +598,13 @@
         sınırlı sayıda dosya yazılabilir.
       </li>
       <li>
+        Uygulama içinden gönderilen hata bildirimlerinin tablosuna uygulamanın
+        doğrudan erişimi yoktur: bildirim yalnızca bir sunucu fonksiyonuyla
+        gönderilir ve durumu yalnızca takip numarasıyla sorulabilir; bildirim
+        metinleri hiçbir kullanıcıya döndürülmez. Bildirimler de biçim, uzunluk ve
+        sayı sınırlarına tabidir.
+      </li>
+      <li>
         Ürün başvuruları ve ambalaj fotoğrafları yalnızca veri sorumlusunun
         erişebildiği, herkese kapalı bir depoda tutulur; fotoğraflara internetten
         erişilemez. İnceleme, internete açık olmayan, yalnızca veri sorumlusunun
@@ -585,7 +631,7 @@
       her zaman bu sayfada yayımlanacaktır.
     </p>
 
-    <p class="note"><em>Bu sayfa en son 20 Eylül 2026 tarihinde güncellenmiştir.</em></p>
+    <p class="note"><em>Bu sayfa en son 30 Eylül 2026 tarihinde güncellenmiştir.</em></p>
   </div>
 </main>
 

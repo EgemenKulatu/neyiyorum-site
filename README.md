@@ -80,8 +80,15 @@ satırı davranışını ölçüyor.)
 ## Yayın öncesi kontrol listesi
 
 - [ ] `kvkk.html` ve `kullanim-kosullari.html` bir hukukçu tarafından incelendi
-- [ ] Veri sorumlusu / hizmet sağlayıcı unvanı ve adresi dolduruldu (her iki
-      sayfada sarı işaretli alanlar; koşullarda ayrıca yetkili mahkeme yeri)
+- [x] Veri sorumlusu / hizmet sağlayıcı kimliği dolduruldu: Egemen Kulatu
+      (gerçek kişi), yerleşim yeri İzmir / Narlıdere (yalnızca il/ilçe, bilinçli
+      karar: 5651 yönetmeliği "yerleşim yeri" diyor, açık adres demiyor; bu
+      yorum bir hukukçuya teyit ettirilmeli). Ana sayfada "İletişim" bölümü var.
+- [ ] Telefon numarası: 5651 kapsamındaki yönetmelik gerçek kişi için ad, soyad,
+      yerleşim yeri, e-posta VE telefon sayıyor; ana sayfadaki İletişim
+      bölümünde telefon yok (verilirse eklenecek, ya da hukukçuya sorulacak)
+- [ ] KVKK yazılı başvuru kanalı: yalnızca il/ilçe var. Yazılı başvuru için
+      posta adresi ya da KEP adresi gerekebilir (hukukçuya sor)
 - [ ] Yurt dışına aktarım mekanizması (KVKK md. 9) seçildi
 - [ ] Sitenin yayın adresi, uygulamadaki `LEGAL_SITE_BASE_URL` ile aynı
       (`src/features/legal/legalLinks.ts`; şu an `https://egemenkulatu.github.io/neyiyorum-site/`).
@@ -89,11 +96,9 @@ satırı davranışını ölçüyor.)
       linklerinin HEPSİ 404 verir.
 - [ ] Üyelik/abonelik devreye girdiğinde KVKK metni ve koşulların 4. bölümü
       güncellendi
-- [ ] **OFF dökümü kuruldu ve ilk çalışma yeşil** (yukarıdaki "Tek seferlik
-      kurulum"). Yeşil olunca `acik-veri.html`'deki ve `kullanim-kosullari.html`
-      7. bölümündeki sarı (`.fill`) cümlelerin sarmalayıcısını kaldır. Uygulama
-      mağazaya çıkmadan önce bu tamamlanmış olmalı: uygulamadaki Veri Kaynakları
-      ekranı dökümün var olduğunu söylüyor.
+- [x] **OFF dökümü kuruldu ve ilk çalışma yeşil** (20 Eylül 2026: elle çalıştırma
+      yeşil, döküm yayında, haftalık zamanlama etkin). `acik-veri.html` ve
+      `kullanim-kosullari.html` 7. bölümündeki sarı (`.fill`) işaretler kaldırıldı.
 
 ### `metodoloji.html`'deki sarı işaretli taahhütler
 
@@ -102,12 +107,23 @@ gerçekleşince `<span class="fill">` sarmalayıcısını kaldır; gerçekleşme
 cümleyi sil. Sarı cümleyle yayınlamak, yapılmayan bir şeyi vaat etmek olur.
 
 - [ ] **OFF kayıtları en geç 30 günde bir tazeleniyor** (Verinin güncelliği).
-      `scripts/refresh-off-products.ts` düzenli çalışacak şekilde zamanlandı
-      (uygulama deposunda CLAUDE.md, "Hukuki savunma" bölümü). Sıklık farklıysa
-      cümledeki gün sayısı düzeltildi. (Bu betik uygulama deposunda, service_role
-      anahtarı ister; yukarıdaki döküm işinden AYRI ve henüz zamanlanmadı.)
-- [ ] **Yanıt süresi 7 gün, düzeltme süresi 30 gün** (itiraz süreci) karşılanabilir
-      süreler; değilse değiştirildi.
+      Zamanlanmış iş HAZIR (`neyiyorum-admin/.github/workflows/scheduled-jobs.yml`,
+      `refresh-off`: her gün, 30 günden eski satırlar) ama GitHub'da henüz KURULMADI
+      ve hiç çalıştırılmadı. **Sarı işareti ancak** o depo özel olarak açılıp secret'lar
+      girildikten ve ilk çalışma yeşil bittikten sonra kaldır (kurulum adımları
+      `neyiyorum-admin/README.md`, "Zamanlanmış işler").
+- [ ] **Yanıt süresi 7 gün, düzeltme süresi 30 gün** (itiraz süreci). Bunlar bir
+      İNSANIN yapacağı işler; betik yapamaz. 30 Eylül 2026'dan beri uygulamadan
+      gelen bildirimler veritabanına kendiliğinden düşüyor (0014) ve `neyiyorum-admin`
+      aracındaki "Bildirimler" sayfası süreleri hesaplıyor; zamanlanmış işteki
+      `report-deadlines` süresi geçen bildirimde GitHub e-postası attırıyor (iş
+      kurulunca). Sürelerin bu sayfadaki sayılarla aynı kaldığını bir test ölçüyor.
+      Sarı işareti, bu sözü tutabileceğine karar verdiğinde kaldır; tutamayacaksan
+      süreyi uzat (araçtaki `REPORT_KINDS` ve bu sayfa birlikte değişir).
+- [ ] **Uygulama içi bildirim formu (metodoloji 2.6, KVKK 2.6, Koşullar 1.6)**:
+      metinler formun VAR olduğunu anlatıyor. Yayından önce `0014` migration'ı
+      canlı projede çalıştırılmış ve formu içeren uygulama sürümü mağazada olmalı;
+      aksi hâlde sayfalar olmayan bir özelliği anlatır.
 
 ## Sürüm geçmişi
 
