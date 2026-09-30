@@ -1,6 +1,6 @@
-# NeYiyorum — statik bilgilendirme sitesi
+# Süz — statik bilgilendirme sitesi
 
-NeYiyorum mobil uygulamasının **metodoloji**, **KVKK aydınlatma metni**,
+Süz mobil uygulamasının (önceki adı NeYiyorum) **metodoloji**, **KVKK aydınlatma metni**,
 **kullanım koşulları** ve **açık veri** sayfaları. Düz HTML/CSS; sayfaları
 oluşturmak için build adımı ya da bağımlılık yok. Yayını GitHub Actions yapıyor
 (aşağıda "Otomatik yayın"), çünkü OFF veri dökümü de her hafta otomatik yenileniyor.

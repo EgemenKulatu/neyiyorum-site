@@ -47,7 +47,7 @@ export const MIN_KEEP_RATIO = 0.5;
 export function buildNotice(siteUrl) {
   const notice = {
     title:
-      'NeYiyorum — Open Food Facts kaynaklı ürün veritabanı dökümü (products_odbl)',
+      'Süz — Open Food Facts kaynaklı ürün veritabanı dökümü (products_odbl)',
     license: 'Open Database License (ODbL) 1.0',
     license_url: 'https://opendatacommons.org/licenses/odbl/1-0/',
     contents_license: 'Database Contents License (DbCL) 1.0',
