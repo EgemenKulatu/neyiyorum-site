@@ -119,9 +119,11 @@
     <p>
       Ürün <strong>görselleri</strong> ise, ürün veritabanımızda olsa bile,
       doğrudan Open Food Facts'in görsel sunucusundan
-      (images.openfoodfacts.org) yüklenir. Bu nedenle uygulamada bir görsel
-      gösterildiğinde IP adresiniz ve istek zamanınız Open Food Facts'in görsel
-      sunucusuna ulaşır.
+      (images.openfoodfacts.org) yüklenir. Görseller uygulamada şu yerlerde
+      gösterilir: ürün sonuç ekranı (barkod okuttuğunuzda açılan ekran),
+      Geçmiş sekmesi, Öneriler sekmesi ve ürün ekranındaki "Önerilenler"
+      bölümü. Bu yerlerden birinde bir görsel gösterildiğinde IP adresiniz ve
+      istek zamanınız Open Food Facts'in görsel sunucusuna ulaşır.
     </p>
 
     <p>
@@ -180,9 +182,26 @@
     <h3>2.4. Kamera</h3>
 
     <p>
-      Barkod okuma için kamera izni istenir. Kamera görüntüsü yalnızca
-      cihazınızda, barkodu çözmek amacıyla anlık olarak işlenir; fotoğraf veya
-      video kaydedilmez, hiçbir sunucuya gönderilmez.
+      Kamera izni barkod okumak ve, isteğe bağlı olarak, ürün eklerken ambalaj
+      fotoğrafı çekmek için istenir. Barkod okurken kamera görüntüsü yalnızca
+      cihazınızda, barkodu çözmek amacıyla anlık olarak işlenir; görüntü
+      kaydedilmez ve hiçbir sunucuya gönderilmez. Ambalaj fotoğrafları yalnızca
+      siz çekip bir ürün başvurusuyla gönderirseniz sunucumuza yüklenir (bkz.
+      2.3).
+    </p>
+
+    <p>
+      <strong>Android'de barkod okuma bileşeni (Google ML Kit):</strong>
+      Android cihazlarda barkodu çözen bileşen, Google'ın ML Kit kütüphanesidir.
+      Barkod cihazınızda çözülür ve kamera görüntüsü Google'a gönderilmez; ancak
+      ML Kit, bileşenin çalışmasını izlemek için Google'a cihaz bilgisi
+      (üretici, model, işletim sistemi sürümü), uygulama bilgisi (paket adı ve
+      sürümü), kurulum başına bir tanımlayıcı ve performans ölçümleri (ör.
+      işlem süresi, hata kodları) gönderir. Google'a göre bu tanımlayıcı bir
+      kişiyi ya da fiziksel cihazı tekil olarak tanımlamaya yönelik değildir.
+      Bu veriler doğrudan cihazınızdan Google'a gider, tarafımıza ulaşmaz ve
+      Google'ın ML Kit koşullarına tabidir. iOS'ta barkod okuma bu bileşen
+      kullanılmadan, cihaz üzerinde yapılır.
     </p>
 
     <h3>2.5. Reklam ve izleme yoktur</h3>
@@ -199,6 +218,9 @@
       Uygulamada kullanıcı davranışını izleyen bir <strong>analitik
       yazılımı</strong> da bulunmamaktadır; hangi ekranı açtığınız, hangi ürünü
       taradığınız veya uygulamada ne kadar kaldığınız tarafımızca ölçülmez.
+      Android'de barkod okuma bileşeninin (Google ML Kit) kendi çalışması
+      hakkında Google'a gönderdiği teknik veriler için bkz. 2.4; bu veriler
+      tarafımıza ulaşmaz.
     </p>
 
     <p>
@@ -435,6 +457,13 @@
         gönderilmez.
       </li>
       <li>
+        <strong>Google (ML Kit, yalnızca Android)</strong>: barkod okuma
+        bileşeninin gönderdiği cihaz bilgisi, uygulama bilgisi, kurulum başına
+        tanımlayıcı ve performans ölçümleri (bkz. 2.4). Bu veriler doğrudan
+        cihazınızdan Google'a gider ve tarafımıza ulaşmaz; kamera görüntüsü,
+        okunan barkod ve profil tercihleriniz bu yolla gönderilmez.
+      </li>
+      <li>
         <strong>E-posta hizmet sağlayıcısı (Google / Gmail)</strong>: yalnızca
         siz bize e-posta gönderirseniz (hata bildirimi, itiraz, KVKK talebi,
         fotoğraf silme talebi); e-postanızın içeriği ve adresiniz iletişim
@@ -615,6 +644,8 @@
         (hastalık bilgisi, konum, rehber, cihaz kimliği, reklam kimliği vb.)
         tarafımızca toplanmaz. Uygulamada reklam ve analitik yazılımı da
         bulunmadığı için bu yolla veri toplanması söz konusu değildir (bkz. 2.5).
+        Android'de barkod okuma bileşeninin doğrudan Google'a gönderdiği
+        kurulum tanımlayıcısı ve teknik veriler için bkz. 2.4.
       </li>
     </ul>
 
