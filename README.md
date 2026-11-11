@@ -89,7 +89,12 @@ satırı davranışını ölçüyor.)
       bölümünde telefon yok (verilirse eklenecek, ya da hukukçuya sorulacak)
 - [ ] KVKK yazılı başvuru kanalı: yalnızca il/ilçe var. Yazılı başvuru için
       posta adresi ya da KEP adresi gerekebilir (hukukçuya sor)
-- [ ] Yurt dışına aktarım mekanizması (KVKK md. 9) seçildi
+- [ ] Yurt dışına aktarım mekanizması (KVKK md. 9): 12 Kasım 2026 kararı,
+      yayından önce standart sözleşme imzalanmıyor. `kvkk.html` §6 bu yüzden bir
+      mekanizma adı VERMİYOR, yalnızca hangi verinin yurt dışında işlendiğini
+      söylüyor (bir mekanizma yazmak, yapılmamış bir işi beyan etmek olurdu).
+      Kullanıcı sayısı ya da gelir artınca yeniden ele alınacak: Supabase ile
+      Kurul'un standart sözleşmesi, imzadan sonra 5 iş günü içinde Kurul'a bildirim.
 - [ ] Sitenin yayın adresi, uygulamadaki `LEGAL_SITE_BASE_URL` ile aynı
       (`src/features/legal/legalLinks.ts`; şu an `https://egemenkulatu.github.io/neyiyorum-site/`).
       Farklıysa uygulamadaki Kullanım Koşulları, KVKK, Metodoloji ve Açık Veri
