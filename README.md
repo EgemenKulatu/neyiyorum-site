@@ -117,14 +117,14 @@ cümleyi sil. Sarı cümleyle yayınlamak, yapılmayan bir şeyi vaat etmek olur
       ve hiç çalıştırılmadı. **Sarı işareti ancak** o depo özel olarak açılıp secret'lar
       girildikten ve ilk çalışma yeşil bittikten sonra kaldır (kurulum adımları
       `neyiyorum-admin/README.md`, "Zamanlanmış işler").
-- [ ] **Yanıt süresi 7 gün, düzeltme süresi 30 gün** (itiraz süreci). Bunlar bir
-      İNSANIN yapacağı işler; betik yapamaz. 30 Eylül 2026'dan beri uygulamadan
-      gelen bildirimler veritabanına kendiliğinden düşüyor (0014) ve `neyiyorum-admin`
-      aracındaki "Bildirimler" sayfası süreleri hesaplıyor; zamanlanmış işteki
-      `report-deadlines` süresi geçen bildirimde GitHub e-postası attırıyor (iş
-      kurulunca). Sürelerin bu sayfadaki sayılarla aynı kaldığını bir test ölçüyor.
-      Sarı işareti, bu sözü tutabileceğine karar verdiğinde kaldır; tutamayacaksan
-      süreyi uzat (araçtaki `REPORT_KINDS` ve bu sayfa birlikte değişir).
+- [x] **Yanıt süresi 7 gün, düzeltme süresi 30 gün** (itiraz süreci). 12 Kasım 2026
+      kararı (metodoloji 2.7): bunlar bir HEDEF, kesin taahhüt değil; sayfa artık
+      "hedefliyoruz ... kesin bir taahhüt değildir" diyor (uygulamadaki formla aynı
+      dil), sarı işaret kalktı. İşi bir insan yapıyor; `neyiyorum-admin` aracındaki
+      "Bildirimler" sayfası süreleri hesaplıyor, zamanlanmış işteki `report-deadlines`
+      süresi geçen bildirimde GitHub e-postası attırıyor. Sürelerin bu sayfadaki
+      sayılarla aynı kaldığını bir test ölçüyor (araçtaki `REPORT_KINDS` ve bu sayfa
+      birlikte değişir).
 - [ ] **Uygulama içi bildirim formu (metodoloji 2.6, KVKK 2.6, Koşullar 1.6)**:
       metinler formun VAR olduğunu anlatıyor. Yayından önce `0014` migration'ı
       canlı projede çalıştırılmış ve formu içeren uygulama sürümü mağazada olmalı;
