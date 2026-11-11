@@ -111,12 +111,13 @@ Sarı (`.fill`) cümleler henüz DOĞRU DEĞİL ya da senin onayını bekliyor. 
 gerçekleşince `<span class="fill">` sarmalayıcısını kaldır; gerçekleşmeyecekse
 cümleyi sil. Sarı cümleyle yayınlamak, yapılmayan bir şeyi vaat etmek olur.
 
-- [ ] **OFF kayıtları en geç 30 günde bir tazeleniyor** (Verinin güncelliği).
-      Zamanlanmış iş HAZIR (`neyiyorum-admin/.github/workflows/scheduled-jobs.yml`,
-      `refresh-off`: her gün, 30 günden eski satırlar) ama GitHub'da henüz KURULMADI
-      ve hiç çalıştırılmadı. **Sarı işareti ancak** o depo özel olarak açılıp secret'lar
-      girildikten ve ilk çalışma yeşil bittikten sonra kaldır (kurulum adımları
-      `neyiyorum-admin/README.md`, "Zamanlanmış işler").
+- [x] **OFF kayıtları tazeleniyor** (Verinin güncelliği). 12 Kasım 2026: zamanlanmış iş
+      (`neyiyorum-admin`, özel depo, `refresh-off`: her gün 04:23 UTC, 30 günden eski
+      satırlar) kuruldu, ilk çalışma yeşil (60 kontrol, 60 güncelleme, 0 hata). Sarı
+      işaret kalktı; cümle "30 günden eski olanlar her gün" diyor (eski "en geç 30
+      günde bir" ifadesi günlük çalışma yüzünden 31 güne kadar uzayabiliyordu). İş
+      kırmızı biterse GitHub e-posta atar; birkaç gün üst üste kırmızıysa söz tutulmuyor
+      demektir.
 - [x] **Yanıt süresi 7 gün, düzeltme süresi 30 gün** (itiraz süreci). 12 Kasım 2026
       kararı (metodoloji 2.7): bunlar bir HEDEF, kesin taahhüt değil; sayfa artık
       "hedefliyoruz ... kesin bir taahhüt değildir" diyor (uygulamadaki formla aynı
